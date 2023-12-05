@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
 import Image from 'next/image'
 function EmailForm() {
-    const [form, setForm] = useState({  question1: '', question2: '', question3: '',question4: '', message:'' });  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
+    const [form, setForm] = useState({  question1: '', question2: '', question3: '',question4: '', message:'' }); 
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+      setForm({ ...form, [e.target.name]: e.target.value });
+    };
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
   
     emailjs.send('service_ivhi3fh', 'template_hoohh4c', form, 'hQ5FLvng7576T2WDd')
@@ -65,7 +65,7 @@ Koliko je Drago pozeljen ako jeste? btw na 10 dobijas sliku mace
 
   </select>
 </label>
-{form.question2 === '10' && <Image height={300}  width={300} src='/OIP.jpeg'/>}
+{form.question2 === '10' && <Image height={300} alt='slika mace'  width={300} src='/OIP.jpeg'/>}
 
 <label className='border p-2 flex items-center justify-center rounded-md'>
   Imas li ti sta da kazes?:
